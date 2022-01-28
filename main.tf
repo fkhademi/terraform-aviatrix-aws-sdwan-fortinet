@@ -324,6 +324,13 @@ resource "aviatrix_transit_external_device_conn" "sdwan" {
   remote_tunnel_cidr        = var.ha_gw ? "${local.gw1_tunnel1_sdwan_ip}/${local.tunnel_masklength},${local.gw1_tunnel2_sdwan_ip}/${local.tunnel_masklength}" : "${local.gw1_tunnel1_sdwan_ip}/${local.tunnel_masklength}"
   backup_local_tunnel_cidr  = var.ha_gw ? "${local.gw2_tunnel1_avx_ip}/${local.tunnel_masklength},${local.gw2_tunnel2_avx_ip}/${local.tunnel_masklength}" : null
   backup_remote_tunnel_cidr = var.ha_gw ? "${local.gw2_tunnel1_sdwan_ip}/${local.tunnel_masklength},${local.gw2_tunnel2_sdwan_ip}/${local.tunnel_masklength}" : null
+  custom_algorithms        = true
+  phase_1_authentication   = "SHA-256"
+  phase_2_authentication   = "NO-AUTH"
+  phase_1_dh_groups        = "14"
+  phase_2_dh_groups        = "14"
+  phase_1_encryption       = "AES-256-CBC"
+  phase_2_encryption       = "AES-256-CBC"
 }
 
 #Create IAM role and policy for the SDWAN instance to access the bucket.
