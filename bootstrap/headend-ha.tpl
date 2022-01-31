@@ -136,7 +136,7 @@ config firewall policy
         set schedule "always"
         set service "ALL"
     next
-    edit 1
+    edit 3
         set name "Dummy3"
         set srcintf "TRANSIT"
         set dstintf "port1"
