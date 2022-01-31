@@ -126,4 +126,24 @@ config firewall policy
         set schedule "always"
         set service "ALL"
     next
+    edit 2
+        set name "Dummy2"
+        set srcintf "port1"
+        set dstintf "TRANSIT"
+        set srcaddr "all"
+        set dstaddr "all"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 1
+        set name "Dummy3"
+        set srcintf "TRANSIT"
+        set dstintf "port1"
+        set srcaddr "all"
+        set dstaddr "all"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+    next
 end   
