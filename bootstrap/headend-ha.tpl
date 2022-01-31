@@ -103,6 +103,8 @@ config router bgp
     set additional-path-select 4
     set graceful-restart-time 1
     set graceful-update-delay 1
+    config redistribute static
+    set status enable
     config neighbor
         edit "${tunnel1_rem}"
             set remote-as ${REMASN}
