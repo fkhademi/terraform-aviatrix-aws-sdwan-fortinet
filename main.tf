@@ -33,6 +33,12 @@ resource "aws_route" "default_vpc1" {
   gateway_id             = aws_internet_gateway.sdwan.id
 }
 
+resource "aws_route" "forti-route" {
+  route_table_id         = aws_vpc.sdwan.default_route_table_id
+  destination_cidr_block = "10.10.0.0/23"
+  network_interface_id   = aws_instance.headend_1[0].primary_network_interface_id
+}
+
 #Security Group
 resource "aws_security_group" "sdwan" {
   name   = "all_traffic"
